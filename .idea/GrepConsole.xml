@@ -13,27 +13,7 @@
                 </RunConfigurationRef>
               </key>
               <value>
-                <Pins>
-                  <option name="pins">
-                    <list>
-                      <Pin>
-                        <option name="consoleUUID" value="2b81d510-3723-4725-bcfb-33a894fe3334" />
-                        <option name="contentType" value="ConsoleContent" />
-                        <option name="grepCompositeModel">
-                          <GrepCompositeModel>
-                            <option name="models">
-                              <list>
-                                <GrepModel>
-                                  <option name="expression" value="51801" />
-                                </GrepModel>
-                              </list>
-                            </option>
-                          </GrepCompositeModel>
-                        </option>
-                      </Pin>
-                    </list>
-                  </option>
-                </Pins>
+                <Pins />
               </value>
             </entry>
           </map>
