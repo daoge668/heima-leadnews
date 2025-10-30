@@ -1,0 +1,186 @@
+# Default ignored files from your current .gitignore
+/shelf/
+/.idea/workspace.xml
+# Datasource local storage ignored files
+/../../../../../:\code\news-v2.3\heima-leadnews\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# =============================
+# Maven
+# =============================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+mvn-debug.log
+*.rej
+*.releaseBackup
+*.versionsBackup
+*.next
+
+# =============================
+# Java
+# =============================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.log
+*.hprof
+*.jprof
+*.ajcore
+*.ser
+hs_err_pid*
+replay_pid*
+
+# =============================
+# IDE
+# =============================
+.idea/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*.tmp
+.DS_Store
+Thumbs.db
+
+# =============================
+# Build
+# =============================
+/build/
+/bin/
+/out/
+/dist/
+
+# =============================
+# Package
+# =============================
+*.tar.gz
+*.zip
+*.rar
+
+# =============================
+# Spring Boot
+# =============================
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+MANIFEST.MF
+.mvn/timing.properties
+.mvn/wrapper/
+
+# =============================
+# Log files
+# =============================
+logs/
+log/
+*.log
+
+# =============================
+# Database
+# =============================
+*.sql
+*.dump
+*.sqlite
+*.db
+
+# =============================
+# OS generated files
+# =============================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =============================
+# Gradle (if applicable)
+# =============================
+.gradle/
+build/
+
+# =============================
+# Eclipse (if applicable)
+# =============================
+.settings/
+.project
+.classpath
+*.launch
+*.settings/
+
+# =============================
+# NetBeans (if applicable)
+# =============================
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.build-info/
+
+# =============================
+# VS Code (if applicable)
+# =============================
+.vscode/
+
+# =============================
+# Temporary files
+# =============================
+*.tmp
+*.temp
+*~
+
+# =============================
+# Environment variables
+# =============================
+.env
+.env.local
+.env.*.local
+
+# =============================
+# Node.js (if applicable)
+# =============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================
+# Testing
+# =============================
+.coverage
+.nyc_output
+coverage/
+
+# =============================
+# Docker
+# =============================
+docker-compose.override.yml
+
+# =============================
+# Heima Leadnews Project Specific
+# =============================
+# Maven target directories for all modules
+**/target/
+# IntelliJ IDEA project files for all modules
+**/*.iml
+**/*.iws
+**/*.ipr
+# Log files for services
+**/logs/
+**/log/
+# Configuration files that may contain sensitive information
+**/bootstrap-*.yml
+**/application-*.yml
+# Database files
+**/*.mv.db
+**/*.trace.db
