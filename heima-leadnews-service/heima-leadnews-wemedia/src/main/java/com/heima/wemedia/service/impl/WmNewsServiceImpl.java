@@ -224,6 +224,8 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
                 throw new CustomException(AppHttpCodeEnum.MATERIASL_REFERENCE_FAIL);
             }
 
+            //对mterials去重
+             materials = materials.stream().distinct().collect(Collectors.toList());
             if(materials.size() != dbMaterials.size()){
                 throw new CustomException(AppHttpCodeEnum.MATERIASL_REFERENCE_FAIL);
             }
