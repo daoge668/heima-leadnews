@@ -9,6 +9,7 @@ import com.heima.model.schedule.pojos.TaskinfoLogs;
 import com.heima.schedule.mapper.TaskinfoLogsMapper;
 import com.heima.schedule.mapper.TaskinfoMapper;
 import com.heima.schedule.service.TaskService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.data.Json;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Calendar;
 import java.util.Date;
 
+@Slf4j
 public class TaskServiceImpl implements TaskService {
     /**
      * 添加任务
@@ -36,6 +38,56 @@ public class TaskServiceImpl implements TaskService {
         return task.getTaskId();
 
     }
+
+    /**
+     * @param taskId
+     * @return
+     */
+    @Override
+    public boolean cancelTask(long taskId) {
+        boolean flag = false;
+        //删除数据库中的数据,更新日志
+        Task task = updateDb(taskId,ScheduleConstants.CANCELLED);
+        if(task != null){
+            //删除redis中的数据
+            removeTaskFromCache(task);
+            flag = true;
+        }
+
+        return flag;
+
+    }
+
+    private void removeTaskFromCache(Task task) {
+        String key = task.getTaskType() + "_" + task.getPriority();
+        //判断任务所在的位置后删除
+        if (task.getExecuteTime() <= System.currentTimeMillis()){
+            //在list中
+            cacheService.lRemove(ScheduleConstants.TOPIC + key,0,JSON.toJSONString(task));
+        }else {
+            //在zset中
+            cacheService.zRemove(ScheduleConstants.TOPIC + key,0,JSON.toJSONString(task));
+        }
+    }
+
+    private Task updateDb(long taskId, int status) {
+        Task task = new Task();
+        try{
+            //删除数据库中的任务
+            taskinfoMapper.deleteById(taskId);
+            //更新日志表
+            TaskinfoLogs taskinfoLogs = taskinfoLogsMapper.selectById(taskId);
+            taskinfoLogs.setStatus(status);
+            taskinfoLogsMapper.updateById(taskinfoLogs);
+            //准备返回task
+            BeanUtils.copyProperties(taskinfoLogs,task);
+            task.setExecuteTime(taskinfoLogs.getExecuteTime().getTime());
+        }catch (Exception e){
+            log.error("删除任务失败,任务id={}",taskId);
+        }
+        return task;
+    }
+
     @Autowired
     private CacheService cacheService;
 

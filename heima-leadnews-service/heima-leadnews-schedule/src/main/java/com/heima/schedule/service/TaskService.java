@@ -13,5 +13,6 @@ public interface TaskService {
      * @return       任务id
      */
     public long addTask(Task task) ;
+    public boolean cancelTask(long taskId);
 
 }
